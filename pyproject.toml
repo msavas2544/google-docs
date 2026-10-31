@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "google-docs"
+dynamic = ["version"]
+description = "Google Docs for Python: read documents as Markdown, write them from Markdown. Tables, lists, templates, tabs, sync and async."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.9"
+authors = [{ name = "Orcai LLC" }]
+keywords = ["google docs", "google docs api", "markdown", "docs api", "google workspace",
+            "document automation", "templates", "llm", "reports"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Office/Business :: Office Suites",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Text Processing :: Markup :: Markdown",
+  "Typing :: Typed",
+  "Framework :: AsyncIO",
+]
+dependencies = ["httpx>=0.24,<1", "markdown-it-py>=2.2"]
+
+[project.optional-dependencies]
+pandas = ["pandas>=1.3"]
+google-auth = ["google-auth>=2.20", "requests>=2"]
+dev = ["pytest>=7", "pytest-asyncio>=0.21", "ruff", "mypy"]
+
+[project.scripts]
+google-docs = "google_docs.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/msavas2544/google-docs"
+Repository = "https://github.com/msavas2544/google-docs"
+Issues = "https://github.com/msavas2544/google-docs/issues"
+Changelog = "https://github.com/msavas2544/google-docs/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/google_docs/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/google_docs"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["UP006", "UP007", "UP035", "UP045", "B008"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = false
+warn_return_any = false

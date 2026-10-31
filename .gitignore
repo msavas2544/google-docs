@@ -1,0 +1,16 @@
+__pycache__/
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+uv.lock
+token.json
+client_secret*.json
+live_check_result.txt
+run_live_check.bat
+compare_result.txt
+_setup/
+publish_to_github.bat
